@@ -1,0 +1,43 @@
+<div class="container-fluid p-5">
+  <div class="expenses w-75 mx-auto">
+      <div> 
+        <h1>Expenses List:</h1>
+        <p>Total Expenses: ₱{{ totalExpenses }}</p>
+      </div>
+
+    <div class="d-flex  justify-content-between">
+        <a href="#" routerLink="/expense/create" class="btn btn-success" id="add_expense">Add expenses</a>
+        <select class="form-select w-25" (change)="showExpensesByCategory($event)">
+            <option value="all">All</option>
+            <option *ngFor="let category of categories" [value]="category">{{ category }}</option>
+          </select>
+          
+    </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-5 item m-4 d-flex {{expense.category}}" *ngFor="let expense of expenses" (click)="toggleRow(expense)">
+            <div class="col-1"><p class="d-none">{{expense.id}}</p>📌</div>
+            <div class="col">
+              <strong>{{expense.name}}</strong>
+              <p>{{expense.category}}</p>
+            </div>
+            <div class="col">
+              <p><span>Price: </span> ₱{{expense.price}}</p>
+              <small class="">{{ expense.createdAt }}</small>
+            </div>
+            <div class="text-center options align-self-center" [ngClass]="{'d-none': activeItem !== expense}">
+              <div class="col toggle d-flex justify-content-evenly">
+                <a href="#" [routerLink]="['/expense/', 'view', expense.id]" class="text-warning mx-2">View</a>
+                <a href="#" [routerLink]="['/expense/', 'edit', expense.id]" class="text-primary mx-2">Edit</a>
+                <input type="button" (click)="deleteExpense(expense.id)" class="btn btn-danger" value="Delete">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+    
+
+  
+    <!--This button will route to the form located in the /expense/create route-->
+</div>

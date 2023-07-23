@@ -1,0 +1,10 @@
+<div class="container summary p-5 mt-5 d-flex flex-column w-50" *ngIf="due">
+    <h1 class="mb-5 text-center">Due details</h1>
+    <p><span class="property_name">Name:</span>  <span>{{due.name}}</span></p>
+    <p><span class="property_name">Description:</span>  <span>{{due.description}}</span></p>
+    <p><span class="property_name">Price:</span>  <span>{{due.price}}</span></p>
+    <p><span class="property_name">Due date:</span>  <span>{{ datePipe.transform(due.dueDate, 'MMMM dd, yyyy') }}
+    </span></p>
+    <a href="#" routerLink="/due/index" class="btn btn-warning align-self-end">Go Back to List</a>
+
+</div>

@@ -1,0 +1,14 @@
+<div class="container-md p-5 mt-5">
+    <div class="summary p-5 d-flex flex-column" *ngIf="expense">
+        <h1 class="mb-5">Expense details</h1>
+        <p><span class="property_name">Expense Name:</span> <span>{{expense.name}}</span></p>
+        <p><span class="property_name">Category:</span> <span>{{expense.category}}</span></p>
+        <p><span class="property_name">Description:</span> <span>{{expense.description}}</span></p>
+        <p><span class="property_name">Price:</span> <span>{{expense.price}}</span></p>
+        <p><span class="property_name">Date created:</span> <span>{{ datePipe.transform(expense.createdAt, 'MMMM dd, yyyy') }}
+        </span></p>
+
+        <a href="#" routerLink="/expense/index" class="btn btn-warning align-self-end">Go Back to List</a>
+    </div>
+
+</div>

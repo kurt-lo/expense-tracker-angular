@@ -1,0 +1,25 @@
+<div class="container p-5">
+    <h1>Dues List:</h1> 
+    <a href="#" class="btn btn-warning" routerLink="/due/create">Add Dues</a>
+    
+    <div class="container">
+        <div class="row item my-3 w-50" *ngFor="let due of dues" (click)="toggleRow(due)">
+        <div class="col-1"><p class="d-none">{{due.id}}</p>💵</div>
+          <div class="col">
+            <strong>{{due.name}}</strong>
+          </div>
+          <div class="col">
+            <p>₱{{due.price}}</p>
+            <small class="">Due: <p>{{ due.dueDate }}</p></small>
+          </div>
+          <div class="row text-center" [ngClass]="{'d-none': activeItem !== due}">
+            <div class="col toggle d-flex justify-content-evenly">
+              <a href="#" [routerLink]="['/due/', 'view', due.id]" class="text-warning mx-2">View</a>
+              <a href="#" [routerLink]="['/due/', 'edit', due.id]" class="text-primary mx-2">Edit</a>
+              <input type="button" (click)="deleteDue(due.id)" class="btn btn-danger" value="Delete">
+              <input type="button" (click)="deleteDue(due.id)" class="btn btn-success" value="Paid">
+            </div>
+          </div>
+        </div>
+    </div>
+</div>

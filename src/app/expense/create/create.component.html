@@ -1,0 +1,38 @@
+<div class="container w-25 p-5 mt-5">
+    <h1 class="mb-5 text-center">Add Expense</h1>
+    <form [formGroup]="form" (ngSubmit)="submit()">
+        <div class="form-group">
+            <label for="name">Name: </label>
+            <input type="text" formControlName="name" id="name" class="form-control w-100">
+            <div *ngIf="input['name'].touched && input['name'].invalid" class="alert alert-danger w-100">
+                <div *ngIf="input['name'].errors && input['name'].errors['required']">Expense name is required!</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="category">Category: </label>
+            <input type="text" formControlName="category" id="category" class="form-control w-100">
+            <div *ngIf="input['category'].touched && input['category'].invalid" class="alert alert-danger w-100">
+                <div *ngIf="input['category'].errors && input['category'].errors['required']">Category is required!</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="description">Description: </label>
+            <textarea formControlName="description" id="description" class="form-control w-100"> </textarea>
+            <div *ngIf="input['description'].touched && input['description'].invalid" class="alert alert-danger w-100">
+                <div *ngIf="input['description'].errors && input['description'].errors['required']">description is required!</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="price">Price: </label>
+            <input type="number" formControlName="price" id="price" class="form-control w-100">
+            <div *ngIf="input['price'].touched && input['price'].invalid" class="alert alert-danger w-100">
+                <div *ngIf="input['price'].errors && input['price'].errors['required']">Price is required!</div>
+            </div>
+        </div>
+
+        <div class="d-flex justify-content-between mt-5">
+            <input type="submit" class="btn btn-primary" [disabled]="!form.valid" value="Submit">
+            <a href="#" routerLink="/expense/index" class="btn btn-warning">Go Back to List</a>
+        </div>
+    </form>
+</div>
